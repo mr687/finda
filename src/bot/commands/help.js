@@ -6,7 +6,7 @@ const response = "Penggunaan Finda:\n" +
   "1. */help* : Daftar perintah yang digunakan\n" +
   "2. */find* : Mulai mencari teman baru\n" +
   "3. */stop* : Mengakhiri obrolan dengan teman\n\n" +
-  "☺️☺️☺️☺️"
+  "NOTE: JANGAN MENELPON ATAU VIDEO CALL ATAU AKAN DIBANNED ☺️☺️☺️☺️"
 
 const send = async (to, whatsapp) => {
   await whatsapp.sendMessage(to.key.remoteJid, response, MessageType.text)
