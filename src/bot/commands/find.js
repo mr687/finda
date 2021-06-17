@@ -10,7 +10,7 @@ const responseFound = "*Percakapan dimulai👋🏼👋🏼*"
 const sendWait = async (to, whatsapp) => {
   await stop(to, whatsapp)
 
-  if (Math.random() < 0.1) {
+  if (Math.random() < 0.7) {
     await storage.addRoom({
       'roomId': to.key.remoteJid + 'simsimi',
       'client1': to.key,
