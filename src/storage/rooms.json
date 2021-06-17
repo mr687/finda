@@ -1,1 +1,11 @@
-[]
+[
+	{
+		"roomId": "6282325441718@s.whatsapp.netsimsimi",
+		"client1": {
+			"remoteJid": "6282325441718@s.whatsapp.net",
+			"fromMe": false,
+			"id": "B1EA7377EEA6994F14B9E699F17FA479"
+		},
+		"client2": "simsimi"
+	}
+]

@@ -15,7 +15,7 @@ module.exports = (msg, fn) => request.post(
         '7fY_w0c2ViLHecwPMULHe3481Nv9cOBVnNxNmwEt',
         'MgT_sjPHRrFl2pMwq9leYoPuK9h6fNXBhTvT0t-u',
         'rCKsXOo5JAKuNFem9egi7enANqSm3oYybj4GPCFd'
-      ][Math.floor(Math.random() * 1)]
+      ][Math.floor(Math.random() * 6)]
     }
   },
   (response) => {
