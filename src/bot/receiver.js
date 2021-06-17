@@ -29,6 +29,8 @@ const onWaMessage = async (message, whatsapp) => {
   const senderId = message.key.remoteJid
   if (senderId.includes('@g.us')) return
 
+  const messageType = Object.keys(message.message)[0]
+
   if (messageType == MessageType.text || messageType == MessageType.extendedText) {
     const messageText = message.message.conversation || message.message.extendedTextMessage.text
     if (!messageText) return
