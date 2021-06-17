@@ -1,0 +1,30 @@
+{
+  "name": "finda",
+  "version": "0.0.1",
+  "description": "Whatsapp bot - Find your real friends",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node ./src/serve.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mr687/finda.git"
+  },
+  "keywords": [
+    "whatsapp",
+    "boot",
+    "finda"
+  ],
+  "author": "mr687",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mr687/finda/issues"
+  },
+  "homepage": "https://github.com/mr687/finda#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "dependencies": {
+    "@adiwajshing/baileys": "github:adiwajshing/baileys"
+  }
+}
