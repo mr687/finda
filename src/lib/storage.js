@@ -76,6 +76,7 @@ const delRoom = async (room) => {
 module.exports = {
   addItem,
   getItem,
+  delItem,
   addWaiting,
   getWaiting,
   delWaiting,

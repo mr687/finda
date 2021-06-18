@@ -6,6 +6,8 @@ const fs = require('fs')
 const logger = require('../lib/logger')
 const storage = require('../lib/storage')
 const commands = require('./commands')
+const stop = require('./commands/stop')
+const options = require('../lib/options')
 const apis = require('../api')
 const {
   resolve
@@ -38,8 +40,12 @@ const onWaMessage = async (message, whatsapp) => {
   if (messageType == MessageType.text || messageType == MessageType.extendedText) {
     const messageText = message.message.conversation || message.message.extendedTextMessage.text
     if (!messageText) return
-    if (messageText.startsWith('/') && commands[messageText.substr(1).toLowerCase()]) {
-      await commands[messageText.substr(1)](message, whatsapp)
+    if (messageText.startsWith('/')) {
+      const args = messageText.substr(1).toLowerCase().split(' ')
+      const command = args[0]
+      if (commands[command]) {
+        await commands[command](message, whatsapp)
+      }
     } else {
       const checkInRoom = await inRoom(senderId)
 
@@ -104,19 +110,16 @@ const onWaMessage = async (message, whatsapp) => {
 const sendFromSimsimi = async (to, msg, whatsapp) => {
   apis.simsimi(msg, async (response) => {
     if (response === undefined) {
-      const rooms = await storage.getRooms()
-      const checker = (p) => {
-        return p.roomId.includes(to)
-      }
-      const checkIfExists = rooms.find(checker)
-      if (checkIfExists !== undefined) {
-        await storage.delRoom(checkIfExists)
-      }
-      await whatsapp.sendMessage(to, '*Percakapan berakhir.🤪*', MessageType.text)
+      await stop({
+        key: {
+          remoteJid: to
+        }
+      }, whatsapp)
       return
     }
     if (response.status === 200) {
-      await new Promise(resolve => setTimeout(() => resolve(), 3000))
+      const simiDelay = await options.get('simiDelay') || 3000
+      await new Promise(resolve => setTimeout(() => resolve(), simiDelay))
       await whatsapp.sendMessage(to, response.atext, MessageType.text)
     }
   })
