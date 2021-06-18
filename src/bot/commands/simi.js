@@ -1,3 +1,6 @@
+const {
+  MessageType
+} = require('@adiwajshing/baileys')
 const simsimi = require('../../api/simsimi')
 const storage = require('../../lib/storage')
 
