@@ -10,16 +10,16 @@ const responseFound = "*Percakapan dimulai👋🏼👋🏼*"
 const sendWait = async (to, whatsapp) => {
   await stop(to, whatsapp)
 
-  if (Math.random() < 0.7) {
-    await storage.addRoom({
-      'roomId': to.key.remoteJid + 'simsimi',
-      'client1': to.key,
-      'client2': 'simsimi'
-    })
+  // if (Math.random() < 0.) {
+  //   await storage.addRoom({
+  //     'roomId': to.key.remoteJid + 'simsimi',
+  //     'client1': to.key,
+  //     'client2': 'simsimi'
+  //   })
 
-    await sendFound(to, whatsapp)
-    return
-  }
+  //   await sendFound(to, whatsapp)
+  //   return
+  // }
 
   const waitingList = await storage.getWaiting()
   if (waitingList.length > 0 && waitingList[0].remoteJid !== to.key.remoteJid) {

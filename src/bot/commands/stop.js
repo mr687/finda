@@ -18,15 +18,20 @@ const send = async (from, whatsapp) => {
 
     await storage.delRoom(checkIfExists)
     await whatsapp.sendMessage(client1.remoteJid, response, MessageType.text)
+
+    await whatsapp.modifyChat(
+      client1.remoteJid,
+      ChatModification.delete
+    )
+    if (client2 === 'simsimi') {
+      return
+    }
+
     await whatsapp.sendMessage(client2.remoteJid, response, MessageType.text)
-    // await whatsapp.modifyChat(
-    //   client1.remoteJid,
-    //   ChatModification.delete
-    // )
-    // await whatsapp.modifyChat(
-    //   client2.remoteJid,
-    //   ChatModification.delete
-    // )
+    await whatsapp.modifyChat(
+      client2.remoteJid,
+      ChatModification.delete
+    )
   }
   return
 }
