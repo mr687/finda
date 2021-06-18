@@ -8,6 +8,7 @@ const pathSimiKeys = './src/storage/simikeys.json'
 
 const simikeys = async (args, to, whatsapp) => {
   args.shift()
+  args.shift()
   const keys = await storage.getItem(pathSimiKeys)
   if (args[0]) {
     if (args[0] === 'add') {
@@ -34,18 +35,18 @@ const simikeys = async (args, to, whatsapp) => {
       }
     }
   } else {
-    await whatsapp.sendMessage(to.remoteJid, keys.join('\n'), MessageType.text)
+    await whatsapp.sendMessage(to.remoteJid, keys.join('\n\n'), MessageType.text)
   }
 }
 
-const commands = [
+const commands = {
   simikeys
-]
+}
 
 module.exports = async (msg, whatsapp) => {
   const adminId = await options.get('adminId')
 
-  if (adminId !== msg.key.remoteJid) return
+  if (adminId != msg.key.remoteJid) return
 
   const msgType = Object.keys(msg.message)[0]
   if (msgType === MessageType.text || msgType === MessageType.extendedText) {
